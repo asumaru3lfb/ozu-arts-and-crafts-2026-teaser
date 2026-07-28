@@ -33,6 +33,7 @@ img{max-width:100%;display:block;}
 /* ---------- placeholder blocks ---------- */
 .ph-icon{font-size:2rem;display:block;margin-bottom:10px;opacity:.4;}
 .ph-label{font-family:var(--ff-en);font-size:.72rem;letter-spacing:.06em;color:var(--ink-soft);text-align:center;opacity:.7;}
+.ph-label small{display:block;margin-top:6px;font-size:.85em;opacity:.8;}
 
 /* ---------- buttons ---------- */
 .btn{
@@ -103,7 +104,7 @@ a.btn-disabled{pointer-events:auto;cursor:not-allowed;}
 .lang-options li{padding:14px 4px;font-family:var(--ff-en);font-size:.8rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:8px;border-bottom:1px solid var(--neutral-deep);}
 .lang-options li:last-child{border-bottom:none;}
 .lang-options li:hover{color:var(--bronze);}
-.lang-options li[data-lang="ja"]{font-family:var(--ff-jp);font-weight:700;}
+.lang-options li[data-lang="ja"]{font-weight:700;}
 .soon-tag{font-family:var(--ff-en);font-size:.6rem;letter-spacing:.05em;color:var(--ink-soft);opacity:.6;white-space:nowrap;}
 
 .menu-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:32px;height:32px;background:none;border:none;cursor:pointer;}
@@ -125,7 +126,6 @@ a.btn-disabled{pointer-events:auto;cursor:not-allowed;}
   animation:hero-kenburns 22s ease-in-out infinite alternate;
   will-change:transform;
 }
-.hero-image-inner .ph-label small{display:block;margin-top:6px;font-size:.85em;opacity:.8;}
 @keyframes hero-kenburns{
   0%{transform:scale(1) translate3d(0,0,0);}
   100%{transform:scale(1.08) translate3d(-1%,-1%,0);}
@@ -143,6 +143,7 @@ a.btn-disabled{pointer-events:auto;cursor:not-allowed;}
   background:var(--maincopy-bg);color:var(--white);
   font-size:clamp(1.7rem,4vw,2.6rem);font-weight:400;letter-spacing:.04em;
   line-height:1.6;padding:14px 36px;margin-bottom:20px;
+  max-width:100%;
 }
 .hero-title .dash{color:var(--white);opacity:.75;}
 .hero-en{font-family:var(--ff-en);font-style:italic;font-size:clamp(1rem,2vw,1.25rem);color:var(--ink-soft);margin-bottom:24px;}
