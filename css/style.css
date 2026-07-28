@@ -182,6 +182,7 @@ a.btn-disabled{pointer-events:auto;cursor:not-allowed;}
 .stat-value small{display:block;font-size:.62rem;color:var(--gray);margin-top:4px;letter-spacing:.03em;}
 
 .hero-cta{text-align:center;padding:48px var(--gutter) 96px;}
+.hero-cta-note{font-size:.76rem;color:var(--gray);margin-top:16px;}
 
 /* ==================== SECTION GENERIC ==================== */
 .section{padding:100px 0;}
@@ -198,8 +199,8 @@ a.btn-disabled{pointer-events:auto;cursor:not-allowed;}
 .overview-table dt{width:40%;flex-shrink:0;font-family:var(--ff-en);font-size:.74rem;letter-spacing:.05em;color:var(--gray);}
 .overview-table dd{font-size:.88rem;}
 
-.experience-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line-gray-light);margin-bottom:90px;}
-.experience-item{background:var(--white);padding:36px 40px;}
+.experience-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;margin-bottom:90px;}
+.experience-item{background:var(--white);padding:36px 40px;border:1px solid var(--line-gray-light);}
 .experience-num{font-family:var(--ff-en);font-size:1.1rem;color:var(--black-pure);display:block;margin-bottom:6px;}
 .experience-title{font-size:1.05rem;font-weight:400;margin-bottom:8px;}
 .experience-venue{font-family:var(--ff-en);font-size:.7rem;letter-spacing:.1em;color:var(--gray);margin-bottom:14px;}
@@ -212,21 +213,35 @@ a.btn-disabled{pointer-events:auto;cursor:not-allowed;}
 .pricing-list dd{font-family:var(--ff-en);font-size:.9rem;font-weight:500;white-space:nowrap;}
 
 /* ---------- cards (artists) ---------- */
-.card-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--line-gray-light);}
-.artist-card{background:var(--white);}
-.card-photo{aspect-ratio:4/5;background:linear-gradient(150deg,var(--bg-neutral),var(--bg-neutral-alt));display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.card-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:48px 32px;}
+.artist-card{background:var(--white);border:1px solid var(--line-gray-light);}
+.card-photo{
+  aspect-ratio:1/1;position:relative;overflow:hidden;
+  background:linear-gradient(150deg,var(--bg-neutral),var(--bg-neutral-alt));
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  transition:opacity .3s ease;
+}
+.artist-card:hover .card-photo{opacity:.85;}
+.card-photo-caption{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  background:rgba(0,0,0,.55);color:var(--white);
+  font-family:var(--ff-en);font-size:.8rem;letter-spacing:.08em;text-align:center;padding:20px;
+  opacity:0;transition:opacity .3s ease;
+}
+.artist-card:hover .card-photo-caption{opacity:1;}
 .card-body{padding:28px 26px;}
 .card-tag{font-family:var(--ff-en);font-size:.66rem;letter-spacing:.15em;color:var(--gray);margin-bottom:10px;}
 .card-body h3{font-size:1.05rem;font-weight:400;margin-bottom:12px;}
-.card-note{font-size:.8rem;color:var(--gray);line-height:1.8;}
+.card-note{font-size:.8rem;color:var(--gray);line-height:1.8;margin-bottom:10px;}
+.card-origin{font-family:var(--ff-en);font-size:.7rem;letter-spacing:.08em;color:var(--gray);opacity:.75;}
 
 /* ---------- venues ---------- */
-.venue-list{display:flex;flex-direction:column;gap:2px;background:var(--line-gray-light);}
-.venue-row{display:grid;grid-template-columns:1fr 1.2fr;gap:1px;background:var(--line-gray-light);align-items:stretch;}
+.venue-list{display:flex;flex-direction:column;gap:80px;}
+.venue-row{display:grid;grid-template-columns:1fr 1.2fr;gap:64px;align-items:stretch;}
 .venue-row.reverse{direction:rtl;}
 .venue-row.reverse > *{direction:ltr;}
-.venue-photo{background:linear-gradient(150deg,var(--bg-neutral),var(--bg-neutral-alt));display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:320px;}
-.venue-info{background:var(--white);padding:48px;display:flex;flex-direction:column;justify-content:center;}
+.venue-photo{background:linear-gradient(150deg,var(--bg-neutral),var(--bg-neutral-alt));border:1px solid var(--line-gray-light);display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:320px;}
+.venue-info{background:var(--white);padding:48px;border:1px solid var(--line-gray-light);display:flex;flex-direction:column;justify-content:center;}
 .venue-experience-tag{font-family:var(--ff-en);font-size:.68rem;letter-spacing:.15em;color:var(--black-pure);font-weight:700;margin-bottom:10px;}
 .venue-info h3{font-size:1.25rem;font-weight:400;margin-bottom:10px;}
 .venue-history{font-size:.78rem;color:var(--gray);margin-bottom:18px;}
@@ -297,9 +312,9 @@ a.btn-disabled{pointer-events:auto;cursor:not-allowed;}
   .main-nav a{font-size:1rem;}
   .menu-toggle{display:flex;}
   .overview-grid{grid-template-columns:1fr;gap:48px;}
-  .experience-grid{grid-template-columns:1fr;}
-  .card-grid{grid-template-columns:repeat(2,1fr);}
-  .venue-row,.venue-row.reverse{grid-template-columns:1fr;direction:ltr;}
+  .experience-grid{grid-template-columns:1fr;gap:64px;}
+  .card-grid{gap:48px 24px;}
+  .venue-row,.venue-row.reverse{grid-template-columns:1fr;direction:ltr;gap:40px;}
   .venue-photo{min-height:220px;}
   .venue-info{padding:36px 32px;}
   .event-grid{grid-template-columns:1fr;}
@@ -315,7 +330,8 @@ a.btn-disabled{pointer-events:auto;cursor:not-allowed;}
   .hero-stats{flex-direction:column;}
   .stat{border-right:none;border-bottom:1px solid var(--line-gray-light);}
   .stat:last-child{border-bottom:none;}
-  .card-grid{grid-template-columns:1fr;}
+  .card-grid{grid-template-columns:1fr;gap:48px 0;}
+  .venue-row,.venue-row.reverse{gap:24px;}
   .access-grid{grid-template-columns:1fr;}
   .overview-table dt{width:50%;}
 }
