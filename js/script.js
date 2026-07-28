@@ -66,6 +66,19 @@ document.addEventListener('DOMContentLoaded', () => {
     toastTimer = setTimeout(() => toast.classList.remove('show'), 3200);
   }
 
+  // ---------- artist card image gallery ----------
+  document.querySelectorAll('[data-gallery]').forEach(gallery => {
+    const mainImg = gallery.querySelector('[data-gallery-img]');
+    const thumbs = gallery.querySelectorAll('.card-gallery-thumb');
+    thumbs.forEach(thumb => {
+      thumb.addEventListener('click', (e) => {
+        e.stopPropagation();
+        mainImg.src = thumb.dataset.src;
+        thumbs.forEach(t => t.classList.toggle('is-active', t === thumb));
+      });
+    });
+  });
+
   // ---------- artist carousel (Swiper) ----------
   if (window.Swiper) {
     new Swiper('.artist-swiper', {
