@@ -6,6 +6,22 @@ document.addEventListener('DOMContentLoaded', () => {
     header.style.boxShadow = window.scrollY > 10 ? '0 6px 24px rgba(0,0,0,.25)' : 'none';
   });
 
+  // ---------- hero parallax ----------
+  const heroImage = document.querySelector('.hero-image');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (heroImage && !prefersReducedMotion) {
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const offset = Math.min(window.scrollY * 0.15, 60);
+        heroImage.style.transform = `translate3d(0, ${offset}px, 0)`;
+        ticking = false;
+      });
+    }, { passive: true });
+  }
+
   // ---------- mobile menu ----------
   const menuToggle = document.getElementById('menuToggle');
   const mainNav = document.getElementById('mainNav');

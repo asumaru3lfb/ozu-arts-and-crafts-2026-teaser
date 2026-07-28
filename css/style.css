@@ -4,13 +4,14 @@
   --ink-soft:#4a4a4a;
   --gold:#B8860B;
   --bronze:#8B7355;
+  --maincopy-bg:#C8A96B;
   --neutral:#F5F5F5;
   --neutral-deep:#E8E8E8;
   --radius:1px;
   --maxw:1180px;
   --gutter:40px;
-  --ff-jp:'Noto Sans JP',sans-serif;
-  --ff-en:'Roboto',sans-serif;
+  --ff-jp:'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','Noto Sans JP',sans-serif;
+  --ff-en:'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','Noto Sans JP',sans-serif;
 }
 
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -114,18 +115,36 @@ a.btn-disabled{pointer-events:auto;cursor:not-allowed;}
   background:var(--white);
 }
 .hero-image{
-  aspect-ratio:16/9;width:100%;
-  background:linear-gradient(150deg,#efece6,#e2ddd3);
+  aspect-ratio:16/9;width:100%;overflow:hidden;position:relative;
   border-bottom:1px solid var(--neutral-deep);
+}
+.hero-image-inner{
+  position:absolute;inset:-6% -6%;
+  background:linear-gradient(150deg,#efece6,#e2ddd3);
   display:flex;flex-direction:column;align-items:center;justify-content:center;
+  animation:hero-kenburns 22s ease-in-out infinite alternate;
+  will-change:transform;
+}
+.hero-image-inner .ph-label small{display:block;margin-top:6px;font-size:.85em;opacity:.8;}
+@keyframes hero-kenburns{
+  0%{transform:scale(1) translate3d(0,0,0);}
+  100%{transform:scale(1.08) translate3d(-1%,-1%,0);}
+}
+@media (prefers-reduced-motion:reduce){
+  .hero-image-inner{animation:none;}
 }
 .hero-text{
   max-width:760px;margin:0 auto;text-align:center;
   padding:72px var(--gutter) 48px;
 }
 .hero-eyebrow{font-family:var(--ff-en);font-size:.72rem;letter-spacing:.3em;color:var(--bronze);margin-bottom:28px;}
-.hero-title{font-size:clamp(1.7rem,4vw,2.6rem);font-weight:400;letter-spacing:.04em;margin-bottom:20px;line-height:1.6;}
-.hero-title .dash{color:var(--gold);}
+.hero-title{
+  display:inline-block;
+  background:var(--maincopy-bg);color:var(--white);
+  font-size:clamp(1.7rem,4vw,2.6rem);font-weight:400;letter-spacing:.04em;
+  line-height:1.6;padding:14px 36px;margin-bottom:20px;
+}
+.hero-title .dash{color:var(--white);opacity:.75;}
 .hero-en{font-family:var(--ff-en);font-style:italic;font-size:clamp(1rem,2vw,1.25rem);color:var(--ink-soft);margin-bottom:24px;}
 .hero-en em{color:var(--gold);font-style:normal;}
 .hero-sub{font-size:.92rem;color:var(--ink-soft);}
