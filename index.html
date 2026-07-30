@@ -8,22 +8,31 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+<!-- SVG filter for the organic "amoeba" logo motion -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="organicWobble" x="-30%" y="-30%" width="160%" height="160%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.009 0.013" numOctaves="2" seed="7" result="turb">
+      <animate attributeName="baseFrequency"
+        dur="22s" repeatCount="indefinite"
+        values="0.009 0.013;0.016 0.007;0.006 0.018;0.011 0.010;0.009 0.013"/>
+    </feTurbulence>
+    <feDisplacementMap in="SourceGraphic" in2="turb" scale="34" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
 
 <!-- ==================== HEADER ==================== -->
 <header class="site-header" id="siteHeader">
   <div class="header-inner">
     <a href="#top" class="logo">
-      <img src="images/logo.png" alt="OZU ARTS and CRAFTS" class="logo-img">
-      <span class="logo-year">2026</span>
+      <span class="logo-text">OZU ARTS and CRAFTS 2026</span>
     </a>
 
     <nav class="main-nav" id="mainNav">
       <ul>
-        <li><a href="#top">メインビジュアル</a></li>
         <li><a href="#artists">参加アーティスト</a></li>
         <li><a href="#venues">会場</a></li>
         <li><a href="#events">イベント</a></li>
@@ -50,248 +59,93 @@
   </div>
 </header>
 
-<!-- ==================== 1. MAIN VISUAL (HERO) ==================== -->
+<!-- ==================== HERO ==================== -->
 <section class="hero" id="top">
-  <canvas id="heroCanvas" class="hero-canvas" aria-hidden="true"></canvas>
-  <div class="hero-fallback-dots" id="heroFallbackDots" aria-hidden="true"></div>
-  <div class="hero-preloader" id="heroPreloader">
-    <div class="hero-preloader-bar"><span></span></div>
+  <div class="hero-logo-wrap">
+    <img src="images/logo.png" alt="OZU ARTS and CRAFTS" class="hero-logo">
   </div>
 
-  <div class="hero-content">
-    <h1 class="hero-title">おおず<span class="dash">－</span>場をめぐる、知覚の変容</h1>
+  <div class="hero-text">
+    <p class="hero-date">2026.10.10 sat – 10.25 sun</p>
+    <p class="hero-catch">「おおず－場をめぐる、知覚の変容」</p>
+    <h1 class="hero-maincopy">OZU ARTS and CRAFTS 2026</h1>
+    <p class="hero-body">大洲の歴史的建築と自然景観を舞台に、国内外のアーティストが「場」と「知覚」をテーマに作品を展開。城下町に息づく「時間の層」、訪れる人々の感覚が交差する芸術祭。大洲城、臥龍山荘、盤泉荘、旧平田邸を巡りながら、日常の知覚が変容していく体験をお届けします。</p>
   </div>
-
-  <a href="#artists" class="hero-scroll-cue" aria-label="次のセクションへ"><span></span></a>
 </section>
 
-<!-- ==================== QUICK FACTS ==================== -->
-<div class="quick-facts">
-  <div class="container quick-facts-inner">
-    <div class="quick-fact"><span class="quick-fact-label">会期</span><span class="quick-fact-value">2026.10.10 sat – 10.25 sun</span></div>
-    <div class="quick-fact"><span class="quick-fact-label">会場</span><span class="quick-fact-value">大洲城／臥龍山荘／盤泉荘／旧平田邸</span></div>
-    <div class="quick-fact"><span class="quick-fact-label">主催</span><span class="quick-fact-value">一般社団法人キタ・マネジメント</span></div>
+<!-- ==================== ARTISTS ==================== -->
+<section class="section" id="artists">
+  <div class="container">
+    <h2 class="bracket-title">参加アーティスト / Participating Artists</h2>
+
+    <div class="artist-grid">
+      <button class="artist-tile" data-artist="kangls">
+        <div class="artist-tile-photo"><img src="images/artists/kangls-1.jpg" alt="康力升"></div>
+        <div class="artist-tile-body">
+          <h3>康力升 <span>/ Kang Li Sheng</span></h3>
+          <p class="artist-tile-venue">大洲城</p>
+          <p class="artist-tile-spec">紙繊維彫刻と光の関係性</p>
+          <span class="artist-tile-link">詳細を見る →</span>
+        </div>
+      </button>
+
+      <button class="artist-tile" data-artist="dangami">
+        <div class="artist-tile-photo"><img src="images/artists/dangami-1.jpg" alt="團上祐志"></div>
+        <div class="artist-tile-body">
+          <h3>團上 祐志 <span>/ Dangami Yushi</span></h3>
+          <p class="artist-tile-venue">臥龍山荘</p>
+          <p class="artist-tile-spec">蜜蝋と自然素材の作品</p>
+          <span class="artist-tile-link">詳細を見る →</span>
+        </div>
+      </button>
+
+      <button class="artist-tile" data-artist="changpc">
+        <div class="artist-tile-photo"><img src="images/artists/changpc-1.jpg" alt="張博傑"></div>
+        <div class="artist-tile-body">
+          <h3>張博傑 <span>/ Chang Po Chieh</span></h3>
+          <p class="artist-tile-venue">盤泉荘</p>
+          <p class="artist-tile-spec">ステンドグラスと空間演出</p>
+          <span class="artist-tile-link">詳細を見る →</span>
+        </div>
+      </button>
+
+      <button class="artist-tile" data-artist="nessim">
+        <div class="artist-tile-photo"><img src="images/artists/nessim-1.jpg" alt="ネシム・コーエン"></div>
+        <div class="artist-tile-body">
+          <h3>Nessim Cohen</h3>
+          <p class="artist-tile-venue">旧平田邸</p>
+          <p class="artist-tile-spec">茶道精神と植物のバイオデザイン</p>
+          <span class="artist-tile-link">詳細を見る →</span>
+        </div>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Artist detail modal -->
+<div class="artist-modal" id="artistModal" aria-hidden="true">
+  <div class="artist-modal-backdrop" data-artist-modal-close></div>
+  <div class="artist-modal-panel" role="dialog" aria-modal="true">
+    <button class="event-modal-close" data-artist-modal-close aria-label="閉じる">×</button>
+    <div class="artist-modal-gallery" data-gallery>
+      <div class="card-gallery-main"><img data-gallery-img alt=""></div>
+      <div class="card-gallery-thumbs" data-artist-thumbs></div>
+    </div>
+    <div class="artist-modal-body" data-artist-modal-body></div>
   </div>
 </div>
 
-<!-- ==================== 2. ARTISTS (CAROUSEL) ==================== -->
-<section class="section" id="artists">
-  <div class="container">
-    <p class="section-eyebrow">02 — ARTISTS</p>
-    <span class="line-pattern line-pattern--eyebrow" aria-hidden="true"></span>
-    <h2 class="section-title">参加アーティスト</h2>
-    <p class="section-lead">4つの会場それぞれに、国内外から招へいしたアーティストが滞在制作した作品を展示します。</p>
-  </div>
-
-  <div class="artist-swiper swiper">
-    <div class="swiper-wrapper">
-
-      <div class="swiper-slide">
-        <article class="artist-card">
-          <div class="card-gallery" data-gallery>
-            <div class="card-gallery-main">
-              <img src="images/artists/kangls-1.jpg" alt="康力升 プロフィール写真" data-gallery-img>
-            </div>
-            <div class="card-gallery-thumbs">
-              <button class="card-gallery-thumb is-active" data-src="images/artists/kangls-1.jpg" aria-label="写真1"></button>
-              <button class="card-gallery-thumb" data-src="images/artists/kangls-2.jpg" aria-label="写真2"></button>
-              <button class="card-gallery-thumb" data-src="images/artists/kangls-3.jpg" aria-label="写真3"></button>
-            </div>
-          </div>
-          <div class="card-body">
-            <p class="card-venue-tag">大洲城</p>
-            <h3 class="card-name">康力升 <span class="card-name-en">Kang Li Sheng</span></h3>
-            <dl class="card-meta">
-              <div><dt>国籍</dt><dd>台湾</dd></div>
-              <div><dt>職業</dt><dd>アーティスト</dd></div>
-              <div><dt>専門分野</dt><dd>紙繊維彫刻、光と知覚の関係性</dd></div>
-            </dl>
-            <ul class="work-list">
-              <li>A《芯柱》</li><li>B《肱川流れ》</li><li>C《野面之光》</li><li>D《亀城の守り｜九重の光》</li>
-            </ul>
-            <p class="card-concept">紙繊維と光によって、大洲城の建築構造、土地の記憶、守護の象徴を転化。紙の繊維、孔、流動感が、この城が時間の中で支えられ、修復され、受け継がれてきた精神に呼応している。</p>
-            <h4 class="card-subhead">プロフィール</h4>
-            <p class="card-bio">制作の過程において、「紙」は媒体であると同時に、知覚と修復のための手立てでもある。紙繊維による彫刻を表現言語とし、素材・光・知覚の関係を探っている。</p>
-            <h4 class="card-subhead">学歴</h4>
-            <ul class="card-list">
-              <li>2023年 國立台南藝術大學大学院 応用芸術研究科（繊維専攻）修了 修士（芸術）</li>
-              <li>2013年 華梵大學 工業デザイン学科 卒業 学士（デザイン）</li>
-            </ul>
-            <h4 class="card-subhead">主な展示歴</h4>
-            <ul class="card-list">
-              <li>2025年 Maison &amp; Objet（フランス・パリ）</li>
-              <li>2024-2025年 Craft Trend Fair（韓国・ソウル）</li>
-              <li>2018年 ユニコーンアートフェア「紙の個性」（中国・北京）</li>
-            </ul>
-            <h4 class="card-subhead">受賞歴</h4>
-            <ul class="card-list">
-              <li>2025年 TCA台湾工芸賞 創作賞（工芸デザイン部門）入選</li>
-            </ul>
-          </div>
-        </article>
-      </div>
-
-      <div class="swiper-slide">
-        <article class="artist-card">
-          <div class="card-gallery" data-gallery>
-            <div class="card-gallery-main">
-              <img src="images/artists/dangami-1.jpg" alt="團上祐志 作品" data-gallery-img>
-            </div>
-            <div class="card-gallery-thumbs">
-              <button class="card-gallery-thumb is-active" data-src="images/artists/dangami-1.jpg" aria-label="写真1"></button>
-              <button class="card-gallery-thumb" data-src="images/artists/dangami-2.jpg" aria-label="写真2"></button>
-              <button class="card-gallery-thumb" data-src="images/artists/dangami-3.jpg" aria-label="写真3"></button>
-            </div>
-          </div>
-          <div class="card-body">
-            <p class="card-venue-tag">臥龍山荘</p>
-            <h3 class="card-name">團上祐志 <span class="card-name-en">Dangami Yushi</span></h3>
-            <dl class="card-meta">
-              <div><dt>国籍</dt><dd>日本</dd></div>
-              <div><dt>職業</dt><dd>アーティスト／文化起業家／ポリネーター</dd></div>
-              <div><dt>専門分野</dt><dd>蜜蜂と自然素材を用いた作品、環境と生の再接続</dd></div>
-            </dl>
-            <ul class="work-list">
-              <li>A《壱是の間》</li><li>B《清吹の間》</li><li>C《霞月の間》</li><li>D《不老庵ふり》</li>
-            </ul>
-            <p class="card-concept">臥龍山荘の歴史空間と対話する形で、蝋という自然素材を用いた作品を展開。蜜蝋・木蝋で制作した壺作品を展示し、時代や素材、土地の文化を横断しながら、アートとクラフトの境界を問い、臥龍山荘と静かに呼応する展示。</p>
-            <h4 class="card-subhead">プロフィール</h4>
-            <p class="card-bio">1995年愛媛県生まれ。蜂の巣を素材に、蜜蜂と人類の古代からの関係を主題とする作品の制作を通じて、生と環境の再接続と治癒を探る。大洲新谷藩主・加藤家の後裔として、歴史的邸宅「團上邸麗楓館（Dangami House）」の運営にも携わり、地域の歴史・文化資源の継承と活用に取り組んでいる。</p>
-            <h4 class="card-subhead">学歴</h4>
-            <ul class="card-list">
-              <li>2019年 武蔵野美術大学 油絵学科油絵専攻 卒業</li>
-            </ul>
-            <h4 class="card-subhead">主な展示歴</h4>
-            <ul class="card-list">
-              <li>2026年「世界の語り手 小さきものの崇高」（東京・神宮前）</li>
-              <li>2026年「The conduit of life 生の流路」（東京・南青山）</li>
-              <li>2025年「The double garden ―二つの庭―」（東京・銀座）</li>
-            </ul>
-            <h4 class="card-subhead">受賞歴</h4>
-            <ul class="card-list">
-              <li>Young Creators Award 2016-17 準グランプリ・審査員特別賞</li>
-              <li>第78回東光展 入選・入賞・新人賞（東京都美術館）</li>
-            </ul>
-          </div>
-        </article>
-      </div>
-
-      <div class="swiper-slide">
-        <article class="artist-card">
-          <div class="card-gallery" data-gallery>
-            <div class="card-gallery-main">
-              <img src="images/artists/changpc-1.jpg" alt="張博傑 プロフィール写真" data-gallery-img>
-            </div>
-            <div class="card-gallery-thumbs">
-              <button class="card-gallery-thumb is-active" data-src="images/artists/changpc-1.jpg" aria-label="写真1"></button>
-              <button class="card-gallery-thumb" data-src="images/artists/changpc-2.jpg" aria-label="写真2"></button>
-              <button class="card-gallery-thumb" data-src="images/artists/changpc-3.jpg" aria-label="写真3"></button>
-            </div>
-          </div>
-          <div class="card-body">
-            <p class="card-venue-tag">盤泉荘</p>
-            <h3 class="card-name">張博傑 <span class="card-name-en">Chang Po Chieh</span></h3>
-            <dl class="card-meta">
-              <div><dt>国籍</dt><dd>台湾</dd></div>
-              <div><dt>職業</dt><dd>ガラスアーティスト</dd></div>
-              <div><dt>専門分野</dt><dd>ステンドグラス、空間演出</dd></div>
-            </dl>
-            <ul class="work-list">
-              <li>インスタレーション《入林》</li>
-            </ul>
-            <p class="card-concept">台湾・昭和期・欧米初期のガラス表現を横断的に取り入れた作品。鑑賞者が作品に触れながら、「音の風景（サウンドスケープ）」を想像し、感覚的に空間へ参与する体験を想定。大洲地域で採取した枯れ枝や樹木を構造体として使用し、その上をガラスの葉が這うように展開。大洲の土地で採集した環境音を取り入れ、地域性と作品空間を接続する。</p>
-            <h4 class="card-subhead">プロフィール</h4>
-            <p class="card-bio">2018年に真真鑲嵌玻璃研究所（zhēnzhēn Stained glass lab）を設立。伝統的なステンドグラス技法と現代表現を融合させ、「ゆっくり」「大切に」「創造する」といった現代に失われつつある美意識を作品に込めている。</p>
-            <h4 class="card-subhead">学歴</h4>
-            <ul class="card-list">
-              <li>2016年 国立台北芸術大学新メディア 修士卒業</li>
-              <li>2012年 実践大学 建築学科 卒業</li>
-            </ul>
-            <h4 class="card-subhead">主な展示歴</h4>
-            <ul class="card-list">
-              <li>2026年「内光」（台湾・台北）</li>
-              <li>2025年「Stained Connection 鑲嵌關係」（台湾・台北）</li>
-              <li>2025年 tavon_kyoto（日本・京都）</li>
-            </ul>
-            <h4 class="card-subhead">受賞歴</h4>
-            <ul class="card-list">
-              <li>2024年 Taiwan Design BEST 100 選出</li>
-              <li>2023年 台湾工芸創作賞 入選</li>
-              <li>2021年 台湾金点設計賞 受賞</li>
-            </ul>
-          </div>
-        </article>
-      </div>
-
-      <div class="swiper-slide">
-        <article class="artist-card">
-          <div class="card-gallery" data-gallery>
-            <div class="card-gallery-main">
-              <img src="images/artists/nessim-1.jpg" alt="ネシム・コーエン プロフィール写真" data-gallery-img>
-            </div>
-            <div class="card-gallery-thumbs">
-              <button class="card-gallery-thumb is-active" data-src="images/artists/nessim-1.jpg" aria-label="写真1"></button>
-              <button class="card-gallery-thumb" data-src="images/artists/nessim-2.jpg" aria-label="写真2"></button>
-              <button class="card-gallery-thumb" data-src="images/artists/nessim-3.jpg" aria-label="写真3"></button>
-            </div>
-          </div>
-          <div class="card-body">
-            <p class="card-venue-tag">旧平田邸</p>
-            <h3 class="card-name">ネシム・コーエン <span class="card-name-en">Nessim Cohen</span></h3>
-            <dl class="card-meta">
-              <div><dt>国籍</dt><dd>フランス</dd></div>
-              <div><dt>職業</dt><dd>アーティスト／バイオデザイナー</dd></div>
-              <div><dt>専門分野</dt><dd>茶道精神、瞑想、生と自然、植物との関係性</dd></div>
-            </dl>
-            <ul class="work-list">
-              <li>Garden of Tea - Chanoyu that becomes life itself</li>
-            </ul>
-            <p class="card-concept">菌類と植物で形作られた茶会へゲストを招待。濃茶や薄茶、そして主菓子を愉しむひとときの中で、「孤高の庭（マイコ・ボックス）」を中心に執り行われる儀式的体験。ボックスは「結界」であり、主客が交わり、響き合う境界の空間となる。宴の終わりには、茶の木やいくつかの植物の種が含まれた「シードオーブ（種の球）」がゲストのもとへ運ばれ、ゲストはボックスを自宅へと持ち帰り、茶会のなかで蒔かれた植物たちを、儀式のように慈しみ育てる時間へと続いていく。</p>
-            <h4 class="card-subhead">プロフィール</h4>
-            <p class="card-bio">日本とアメリカを往来しながら活動するフランス人アーティスト。10年以上にわたり日本茶道を学び、陶芸や書道の研鑽を重ねる中で、身体性を伴う実践を通じ、感覚・儀式・瞑想を融合した表現を展開している。</p>
-            <h4 class="card-subhead">学歴</h4>
-            <ul class="card-list">
-              <li>ソルボンヌ大学 哲学修士課程修了</li>
-              <li>Sciences Po Paris 政治理論修士課程修了</li>
-            </ul>
-            <h4 class="card-subhead">主な展示歴</h4>
-            <ul class="card-list">
-              <li>2026年「De Natura Statuum」（フランス・パリ）</li>
-              <li>2026年「Chinju no Mori」（日本・東京・渋谷）</li>
-              <li>2026年「Acoustics of Seeds」（台湾・台北）</li>
-            </ul>
-            <h4 class="card-subhead">主な活動</h4>
-            <ul class="card-list">
-              <li>2025-2026年 NHK World『New Japonism』出演</li>
-              <li>2025年 慶應義塾大学大学院 KMD 登壇</li>
-              <li>2020年-現在 Maastricht Academy of Architecture 客員講師</li>
-            </ul>
-          </div>
-        </article>
-      </div>
-
-    </div>
-
-    <button class="swiper-button-prev artist-nav-prev" aria-label="前のアーティストへ"></button>
-    <button class="swiper-button-next artist-nav-next" aria-label="次のアーティストへ"></button>
-    <div class="swiper-pagination artist-pagination"></div>
-  </div>
-</section>
-
-<!-- ==================== 3. VENUES (MAP + PANEL) ==================== -->
+<!-- ==================== VENUES ==================== -->
 <section class="section section-alt" id="venues">
   <div class="container">
-    <p class="section-eyebrow">03 — VENUES</p>
-    <span class="line-pattern line-pattern--eyebrow" aria-hidden="true"></span>
-    <h2 class="section-title">会場</h2>
-    <p class="section-lead">マップのピンを選択すると、会場の詳細が表示されます。実際のインタラクティブマップ（Mapbox / Google Maps）は今後実装予定です。</p>
+    <h2 class="bracket-title">会場 / Venues</h2>
   </div>
 
   <div class="venue-explorer container">
     <div class="venue-map" id="venueMap">
       <div class="venue-map-placeholder">
         <span class="ph-icon">🗺</span>
-        <span class="ph-label">会場マップ（インタラクティブマップ）準備中</span>
+        <span class="ph-label">OZU MAP<br><small>実寸のインタラクティブマップは今後実装予定です</small></span>
       </div>
       <button class="venue-pin" data-venue="ozujo" style="--pin-x:28%;--pin-y:34%;" aria-label="大洲城を選択"><span></span></button>
       <button class="venue-pin" data-venue="garyu" style="--pin-x:62%;--pin-y:24%;" aria-label="臥龍山荘を選択"><span></span></button>
@@ -301,151 +155,134 @@
 
     <div class="venue-panel" id="venuePanel">
       <div class="venue-panel-item is-active" data-venue-panel="ozujo">
-        <p class="venue-experience-tag">光と空間の変容</p>
+        <p class="venue-selected-tag">SELECTED VENUE</p>
         <h3>大洲城</h3>
         <p class="venue-history">加藤嘉明が築いた城郭。戦国時代の歴史を今も伝える建築空間。</p>
         <dl class="venue-facts">
-          <div><dt>住所</dt><dd>準備中</dd></div>
           <div><dt>開場時間</dt><dd>9:00–17:00（会期中）</dd></div>
+          <div><dt>施設概要</dt><dd>四半世紀の再建を経た木造復元天守。四階からは肱川と城下町を一望できる、亀城の守りのシンボルとして親しまれています。</dd></div>
         </dl>
         <p class="venue-artist">アーティスト：康力升</p>
         <p class="venue-perception">光がどのように空間を満たし、既知の建築を新たに見えさせるのか。</p>
         <ul class="work-list">
           <li>《芯柱》</li><li>《肱川流れ》</li><li>《野面之光》</li><li>《亀城の守り｜九重の光》</li>
         </ul>
-        <a href="#access" class="btn btn-outline btn-sm">アクセスを見る</a>
+        <a href="#access" class="btn btn-outline btn-sm">アクセスを見る →</a>
       </div>
 
       <div class="venue-panel-item" data-venue-panel="garyu">
-        <p class="venue-experience-tag">沈黙と気配</p>
+        <p class="venue-selected-tag">SELECTED VENUE</p>
         <h3>臥龍山荘</h3>
         <p class="venue-history">庭園と建築の美が融合した明治の大庄屋邸宅。</p>
         <dl class="venue-facts">
-          <div><dt>住所</dt><dd>準備中</dd></div>
           <div><dt>開場時間</dt><dd>9:00–17:00（会期中）</dd></div>
+          <div><dt>施設概要</dt><dd>肱川の眺望を活かした数寄屋建築と庭園が国の重要文化財に指定されている、明治期の名邸。</dd></div>
         </dl>
         <p class="venue-artist">アーティスト：團上祐志</p>
         <p class="venue-perception">静けさの中に、作品や存在の気配が立ち現れる瞬間。</p>
         <ul class="work-list">
           <li>臥龍院「壱是の間」</li><li>臥龍院「清吹の間」</li><li>臥龍院「霞月の間」</li><li>不老庵</li>
         </ul>
-        <a href="#access" class="btn btn-outline btn-sm">アクセスを見る</a>
+        <a href="#access" class="btn btn-outline btn-sm">アクセスを見る →</a>
       </div>
 
       <div class="venue-panel-item" data-venue-panel="bansen">
-        <p class="venue-experience-tag">交差と共有</p>
+        <p class="venue-selected-tag">SELECTED VENUE</p>
         <h3>盤泉荘</h3>
         <p class="venue-history">100年の歴史を持つ伝統的な季節湯治場。</p>
         <dl class="venue-facts">
-          <div><dt>住所</dt><dd>準備中</dd></div>
           <div><dt>開場時間</dt><dd>9:00–17:00（会期中）</dd></div>
+          <div><dt>施設概要</dt><dd>2026年に開場100周年を迎える近代和風建築。連携イベントも同時開催予定。</dd></div>
         </dl>
         <p class="venue-artist">アーティスト：張博傑</p>
         <p class="venue-perception">人や文化、過去と現在が交わる場で、新しい意味が生まれる。</p>
         <p class="venue-desc">ガラスインスタレーション《入林》— ステンドグラス表現と大洲地域の素材（枯れ枝・環境音）を活用。</p>
         <p class="venue-event">盤泉荘100周年記念連携イベント：10月17日（土）～18日（日）</p>
-        <a href="#access" class="btn btn-outline btn-sm">アクセスを見る</a>
+        <a href="#access" class="btn btn-outline btn-sm">アクセスを見る →</a>
       </div>
 
       <div class="venue-panel-item" data-venue-panel="hirata">
-        <p class="venue-experience-tag">創作の時間性</p>
+        <p class="venue-selected-tag">SELECTED VENUE</p>
         <h3>旧平田邸（HITOSHIMA平田邸・Art Space）</h3>
         <p class="venue-history">大洲の商業文化を象徴する町家。現在はアーティストの制作拠点。</p>
         <dl class="venue-facts">
-          <div><dt>住所</dt><dd>準備中</dd></div>
           <div><dt>開場時間</dt><dd>9:00–17:00（会期中）</dd></div>
+          <div><dt>施設概要</dt><dd>明治期の町家を改修したアートスペース。滞在制作の拠点としても活用されています。</dd></div>
         </dl>
         <p class="venue-artist">アーティスト：ネシム・コーエン</p>
         <p class="venue-perception">アーティストの制作プロセスそのものに触れ、作品がどのように生まれるのかを体験する。</p>
         <p class="venue-desc">《庭へとつながる茶会》— 菌類と植物の関係、茶道精神の現代的解釈による参加型の体験。</p>
-        <a href="#access" class="btn btn-outline btn-sm">アクセスを見る</a>
+        <a href="#access" class="btn btn-outline btn-sm">アクセスを見る →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ==================== 4. EVENTS (3x3 GRID) ==================== -->
+<!-- ==================== EVENTS ==================== -->
 <section class="section" id="events">
   <div class="container">
-    <p class="section-eyebrow">04 — EVENTS</p>
-    <span class="line-pattern line-pattern--eyebrow" aria-hidden="true"></span>
-    <h2 class="section-title">イベント</h2>
-    <p class="section-lead">確定しているイベントは以下の6件です。追加のイベントは決まり次第このグリッドに掲載します。</p>
+    <h2 class="bracket-title">イベント / Events</h2>
 
     <div class="event-grid-9">
-      <button class="event-card-9" data-event="normal">
-        <div class="event-card-9-img"><img src="images/event-photo-4.jpg" alt="過去の展示風景" loading="lazy"></div>
+      <button class="event-card-9" data-event="opening">
+        <div class="event-card-9-img"><img src="images/event-photo-3.jpg" alt="オープニングレセプション" loading="lazy"></div>
         <div class="event-card-9-body">
-          <h3>通常開放</h3>
-          <p class="event-card-9-date">2026.10.10 sat – 10.25 sun</p>
-          <p class="event-card-9-desc">4会場を通常料金にて公開。会期中は毎日9:00〜17:00にご覧いただけます。</p>
+          <p class="event-card-9-date">2026.10.10 sat</p>
+          <h3>オープニングレセプション＆アーティストトーク</h3>
+          <p class="event-card-9-desc">フェスティバルの開幕を飾る特別セッション。国内外アーティストが一堂に会し、制作プロセスや「知覚の変容」について語ります。</p>
           <span class="event-card-9-cta">詳しく見る</span>
         </div>
       </button>
 
-      <button class="event-card-9" data-event="night">
-        <div class="event-card-9-img"><img src="images/event-photo-1.jpg" alt="過去の展示風景（夜間）" loading="lazy"></div>
+      <button class="event-card-9" data-event="ukaibar">
+        <div class="event-card-9-img"><img src="images/event-photo-1.jpg" alt="辻回バル／U-KAI BAR" loading="lazy"></div>
         <div class="event-card-9-body">
-          <h3>夜間鑑賞</h3>
-          <p class="event-card-9-date">2026.10.23 fri – 10.24 sat</p>
-          <p class="event-card-9-desc">17:30／18:30／19:30の3回開催（各回20名・要予約）。対象：大洲城・臥龍山荘・盤泉荘。</p>
+          <p class="event-card-9-date">2026.10.10 sat – 10.12 mon</p>
+          <h3>辻回バル／U-KAI BAR</h3>
+          <p class="event-card-9-desc">肱川沿いのほとりに、期間限定でオープンするバー。地元食材やクラフトフードとともに、アーティストとの交流を深めます。</p>
           <span class="event-card-9-cta">詳しく見る</span>
         </div>
       </button>
 
-      <button class="event-card-9" data-event="tour">
-        <div class="event-card-9-img"><img src="images/event-photo-2.jpg" alt="過去の展示風景（ツアーの様子）" loading="lazy"></div>
+      <button class="event-card-9" data-event="nightview">
+        <div class="event-card-9-img"><img src="images/event-photo-2.jpg" alt="大洲城 夜間特別鑑賞会" loading="lazy"></div>
         <div class="event-card-9-body">
-          <h3>特別鑑賞ツアー</h3>
-          <p class="event-card-9-date">会期中 各施設 8:00–9:00</p>
-          <p class="event-card-9-desc">アーティスト・企画者による朝の特別案内。NIPPONIA HOTEL 大洲など宿泊施設と連携。</p>
+          <p class="event-card-9-date">2026.10.24 sat</p>
+          <h3>大洲城 夜間特別鑑賞会</h3>
+          <p class="event-card-9-desc">普段立ち入ることのない夜の大洲城を舞台に、篝火と月あかりのコントラストの中、選りすぐりの作品を鑑賞します。</p>
           <span class="event-card-9-cta">詳しく見る</span>
         </div>
       </button>
 
-      <button class="event-card-9" data-event="bansen100">
-        <div class="event-card-9-img"><img src="images/event-photo-5.jpg" alt="過去の展示風景（歴史ある店舗）" loading="lazy"></div>
+      <button class="event-card-9" data-event="crosstalk">
+        <div class="event-card-9-img"><img src="images/event-photo-4.jpg" alt="レジデンス・アーティスト・クロストーク" loading="lazy"></div>
         <div class="event-card-9-body">
-          <h3>盤泉荘100周年記念イベント</h3>
-          <p class="event-card-9-date">2026.10.17 sat – 10.18 sun</p>
-          <p class="event-card-9-desc">宵の盤泉荘（迂回バル連携）、出張簡易茶会、大正時代の服飾貸出など。</p>
+          <p class="event-card-9-date">2026.10.18 sun</p>
+          <h3>レジデンス・アーティスト・クロストーク</h3>
+          <p class="event-card-9-desc">台湾と日本の作家がそれぞれの視点で、アジアの工芸、そして現代美術における「ローカリティ」について語り合います。</p>
           <span class="event-card-9-cta">詳しく見る</span>
         </div>
       </button>
 
-      <button class="event-card-9" data-event="workshop">
-        <div class="event-card-9-img"><img src="images/event-photo-3.jpg" alt="過去の展示風景（来場者の様子）" loading="lazy"></div>
+      <button class="event-card-9" data-event="textileworkshop">
+        <div class="event-card-9-img"><img src="images/event-photo-5.jpg" alt="大洲の素材でつくる織物ワークショップ" loading="lazy"></div>
         <div class="event-card-9-body">
-          <h3>ワークショップ・トークショー</h3>
-          <p class="event-card-9-date">日程調整中</p>
-          <p class="event-card-9-desc">アーティストによるワークショップ、キュレーター・企画者によるトークショー。</p>
+          <p class="event-card-9-date">2026.10.17 sat</p>
+          <h3>大洲の素材でつくる織物ワークショップ</h3>
+          <p class="event-card-9-desc">大洲で育つ天然素材を使い、豊かな自然の恵みを手仕事で編み出す体験プログラム。</p>
           <span class="event-card-9-cta">詳しく見る</span>
         </div>
       </button>
 
-      <button class="event-card-9" data-event="stamp">
-        <div class="event-card-9-img"><img src="images/event-photo-6.jpg" alt="過去の展示風景（インスタレーション）" loading="lazy"></div>
+      <button class="event-card-9" data-event="closing">
+        <div class="event-card-9-img"><img src="images/event-photo-6.jpg" alt="クロージング・アンビエントパフォーマンス" loading="lazy"></div>
         <div class="event-card-9-body">
-          <h3>スタンプラリー</h3>
-          <p class="event-card-9-date">会期中随時</p>
-          <p class="event-card-9-desc">4会場を巡るスタンプラリー。3施設以上達成で連携事業者プレゼント（詳細調整中）。</p>
+          <p class="event-card-9-date">2026.10.25 sun</p>
+          <h3>クロージング・アンビエントパフォーマンス</h3>
+          <p class="event-card-9-desc">最終日は環境音とアーティストのパフォーマンスが共演する音の演出で、閉幕の刻を静かに彩ります。</p>
           <span class="event-card-9-cta">詳しく見る</span>
         </div>
       </button>
-
-      <div class="event-card-9 event-card-9--placeholder">
-        <p>追加イベント<br>準備中</p>
-      </div>
-      <div class="event-card-9 event-card-9--placeholder">
-        <p>追加イベント<br>準備中</p>
-      </div>
-      <div class="event-card-9 event-card-9--placeholder">
-        <p>追加イベント<br>準備中</p>
-      </div>
-    </div>
-
-    <div class="event-cta">
-      <a href="#" class="btn btn-outline btn-disabled" aria-disabled="true">予約フォーム（準備中）</a>
     </div>
   </div>
 </section>
@@ -461,61 +298,52 @@
   </div>
 </div>
 
-<!-- ==================== 5. ACCESS (TABS) ==================== -->
+<!-- ==================== ACCESS ==================== -->
 <section class="section section-alt" id="access">
   <div class="container">
-    <p class="section-eyebrow">05 — ACCESS</p>
-    <span class="line-pattern line-pattern--eyebrow" aria-hidden="true"></span>
-    <h2 class="section-title">アクセス</h2>
-    <p class="section-lead">目的地：ヒトシマ / HITOSHIMA 平田邸・Art Space</p>
+    <h2 class="bracket-title">アクセス / Access</h2>
 
     <div class="access-tabs">
       <div class="access-tab-buttons" role="tablist">
-        <button class="access-tab-btn is-active" data-tab="matsuyama" role="tab" aria-selected="true">松山から</button>
-        <button class="access-tab-btn" data-tab="ozueki" role="tab" aria-selected="false">大洲駅から</button>
+        <button class="access-tab-btn is-active" data-tab="matsuyama" role="tab" aria-selected="true">松山から (From Matsuyama)</button>
+        <button class="access-tab-btn" data-tab="ozueki" role="tab" aria-selected="false">大洲駅から (From Ozu Station)</button>
       </div>
 
       <div class="access-tab-panel is-active" data-tab-panel="matsuyama" role="tabpanel">
+        <p class="destination-base-label">DESTINATION BASE</p>
+        <p class="destination-base-value">ヒトシマ / HITOSHIMA 平田邸 ART SPACE</p>
         <div class="access-tab-grid">
-          <div class="access-route-map">
-            <span class="ph-icon">🗺</span>
-            <span class="ph-label">経路図準備中<br><small>松山 → 大洲 → ヒトシマ</small></span>
-          </div>
           <div class="access-route-info">
-            <p class="access-route-time">所要時間：準備中</p>
-            <h4>電車・バスの場合</h4>
+            <p class="access-route-label">所要時間の目安</p>
+            <p class="access-route-time">約60分</p>
             <ol>
-              <li>松山駅からJR予讃線に乗車</li>
-              <li>伊予大洲駅で下車</li>
-              <li>タクシーまたは徒歩でヒトシマへ</li>
+              <li>JR予讃線に乗車</li>
+              <li>大洲駅で下車</li>
+              <li>タクシーで約5分</li>
             </ol>
-            <h4>車の場合</h4>
-            <ol>
-              <li>松山ICから松山自動車道に乗車</li>
-              <li>大洲ICで下車</li>
-              <li>一般道でヒトシマへ</li>
-            </ol>
-            <p class="access-route-parking">駐車場情報：準備中</p>
-            <a href="#" class="access-route-link btn-disabled" aria-disabled="true">Google Maps で詳しく見る（準備中）</a>
+            <a href="#" class="access-route-link btn-disabled" aria-disabled="true">Google Mapsでルートを開く ↗</a>
+          </div>
+          <div class="access-route-map">
+            <span class="ph-label">ROUTE SCHEMATIC<br><small>小さめの地図または経路イメージ画像を後日差し込みます</small></span>
           </div>
         </div>
       </div>
 
       <div class="access-tab-panel" data-tab-panel="ozueki" role="tabpanel">
+        <p class="destination-base-label">DESTINATION BASE</p>
+        <p class="destination-base-value">ヒトシマ / HITOSHIMA 平田邸 ART SPACE</p>
         <div class="access-tab-grid">
-          <div class="access-route-map">
-            <span class="ph-icon">🗺</span>
-            <span class="ph-label">経路図準備中<br><small>伊予大洲駅 → ヒトシマ</small></span>
-          </div>
           <div class="access-route-info">
-            <p class="access-route-time">所要時間：準備中</p>
-            <h4>徒歩・タクシーの場合</h4>
+            <p class="access-route-label">所要時間の目安</p>
+            <p class="access-route-time">約15分</p>
             <ol>
               <li>伊予大洲駅を出て市街地方面へ</li>
               <li>タクシーまたは徒歩でヒトシマへ</li>
             </ol>
-            <p class="access-route-parking">駐車場情報：準備中</p>
-            <a href="#" class="access-route-link btn-disabled" aria-disabled="true">Google Maps で詳しく見る（準備中）</a>
+            <a href="#" class="access-route-link btn-disabled" aria-disabled="true">Google Mapsでルートを開く ↗</a>
+          </div>
+          <div class="access-route-map">
+            <span class="ph-label">ROUTE SCHEMATIC<br><small>小さめの地図または経路イメージ画像を後日差し込みます</small></span>
           </div>
         </div>
       </div>
@@ -547,24 +375,23 @@
 <footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer-brand">
-      <img src="images/logo.png" alt="OZU ARTS and CRAFTS" class="footer-logo-img">
-      <p class="footer-copy">おおず－場を巡る、知覚の変容</p>
-      <p class="footer-hashtag">#OZU2026</p>
+      <p class="footer-logo-text">OZU ARTS and CRAFTS 2026</p>
+      <p class="footer-copy">「おおず－場をめぐる、知覚の変容」<br>大洲市内の文化財を舞台にした現代アートと工芸の展示。</p>
       <div class="sns-links">
         <a href="#" class="sns-icon btn-disabled" aria-disabled="true">Instagram</a>
         <a href="#" class="sns-icon btn-disabled" aria-disabled="true">Facebook</a>
-        <a href="#" class="sns-icon btn-disabled" aria-disabled="true">WeChat</a>
+        <a href="#" class="sns-icon btn-disabled" aria-disabled="true">X</a>
+        <a href="#" class="sns-icon btn-disabled" aria-disabled="true">YouTube</a>
       </div>
-    </div>
-    <div>
-      <h4>お問い合わせ</h4>
-      <p>OZU ARTS and CRAFTS 2026 事務局<br>（一般社団法人キタ・マネジメント内）</p>
-      <p class="footer-note">お問い合わせ・取材申し込み・FAQは準備中です</p>
     </div>
     <div>
       <h4>主催</h4>
       <p>一般社団法人キタ・マネジメント</p>
       <p class="footer-note">企画・キュレーション：HITOSHIMA平田邸・Art Space</p>
+    </div>
+    <div>
+      <h4>お問い合わせ</h4>
+      <p class="footer-note">お問い合わせ先は準備中です</p>
       <p class="footer-note">2026.07.28 サイトを更新しました</p>
     </div>
   </div>
@@ -576,9 +403,6 @@
 
 <div class="toast" id="langToast"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="js/hero-scene.js"></script>
 <script src="js/script.js"></script>
 </body>
 </html>
