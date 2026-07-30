@@ -136,7 +136,7 @@ a.btn-disabled{pointer-events:auto;cursor:not-allowed;}
 }
 .hero-logo-wrap{margin-bottom:56px;}
 .hero-logo{
-  width:100%;max-width:820px;margin:0 auto;display:block;
+  width:100%;max-width:620px;margin:0 auto;display:block;
   filter:url(#organicWobble);
 }
 .hero-text{max-width:760px;}
