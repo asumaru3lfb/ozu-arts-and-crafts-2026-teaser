@@ -32,6 +32,15 @@ img{max-width:100%;display:block;}
 button{font:inherit;background:none;border:none;cursor:pointer;color:inherit;}
 .container{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter);}
 
+/* ---------- ink block: black box + faint red grid texture ---------- */
+.ink-block{
+  display:inline-block;background-color:var(--black-pure);color:var(--white);
+  background-image:
+    repeating-linear-gradient(0deg,rgba(192,57,43,.18) 0,rgba(192,57,43,.18) 1px,transparent 1px,transparent 22px),
+    repeating-linear-gradient(90deg,rgba(192,57,43,.18) 0,rgba(192,57,43,.18) 1px,transparent 1px,transparent 22px);
+  padding:10px 22px;
+}
+
 /* ---------- line pattern / bracket title ---------- */
 .bracket-title{
   font-size:clamp(1.2rem,2.6vw,1.6rem);font-weight:700;letter-spacing:.02em;margin-bottom:48px;
@@ -130,12 +139,11 @@ a.btn-disabled{pointer-events:auto;cursor:not-allowed;}
   filter:url(#organicWobble);
 }
 .hero-text{max-width:760px;}
-.hero-date{font-family:var(--ff-en);font-size:1rem;font-weight:700;letter-spacing:.02em;margin-bottom:16px;}
-.hero-catch{font-size:1.15rem;font-weight:700;margin-bottom:20px;}
+.hero-date{font-family:var(--ff-en);font-style:italic;font-size:1rem;font-weight:700;letter-spacing:.02em;margin-bottom:6px;}
+.hero-catch{font-size:1.15rem;font-weight:700;margin-bottom:6px;}
 .hero-maincopy{
-  display:inline-block;background:var(--black-pure);color:var(--white);
   font-size:clamp(1.4rem,3.2vw,2rem);font-weight:700;letter-spacing:.02em;
-  padding:14px 28px;margin-bottom:24px;
+  margin-bottom:24px;
 }
 .hero-body{font-size:.9rem;color:var(--black);line-height:2;max-width:640px;}
 
