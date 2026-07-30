@@ -34,7 +34,8 @@ button{font:inherit;background:none;border:none;cursor:pointer;color:inherit;}
 
 /* ---------- ink block: black box + faint red grid texture ---------- */
 .ink-block{
-  display:inline-block;background-color:var(--black-pure);color:var(--white);
+  display:block;width:fit-content;max-width:100%;
+  background-color:var(--black-pure);color:var(--white);
   background-image:
     repeating-linear-gradient(0deg,rgba(192,57,43,.18) 0,rgba(192,57,43,.18) 1px,transparent 1px,transparent 22px),
     repeating-linear-gradient(90deg,rgba(192,57,43,.18) 0,rgba(192,57,43,.18) 1px,transparent 1px,transparent 22px);
